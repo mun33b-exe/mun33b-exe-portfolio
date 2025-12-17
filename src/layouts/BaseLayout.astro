@@ -10,6 +10,8 @@ const {
   title = "Muhammad Muneeb Ur Rehman | Software Engineer",
   description = "Software Engineer specializing in mobile development with Flutter. Building innovative applications with a focus on UI/UX and clean architecture."
 } = Astro.props;
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <!DOCTYPE html>
@@ -32,10 +34,10 @@ const {
     <meta name="twitter:description" content={description} />
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/images/profile/profile.png" />
+    <link rel="icon" type="image/png" href={`${base}assets/images/profile/profile.png`} />
     
     <!-- Preload Outfit Font (Local) -->
-    <link rel="preload" href="/assets/fonts/Outfit-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href={`${base}assets/fonts/Outfit-VariableFont_wght.ttf`} as="font" type="font/ttf" crossorigin />
     
     <title>{title}</title>
   </head>

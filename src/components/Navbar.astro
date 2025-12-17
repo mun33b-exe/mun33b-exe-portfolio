@@ -1,11 +1,13 @@
 ---
+const base = import.meta.env.BASE_URL;
+
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/experience', label: 'Experience' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/education', label: 'Education' },
-  { href: '/contact', label: 'Contact' },
+  { href: `${base}`, label: 'Home' },
+  { href: `${base}about/`, label: 'About' },
+  { href: `${base}experience/`, label: 'Experience' },
+  { href: `${base}projects/`, label: 'Projects' },
+  { href: `${base}education/`, label: 'Education' },
+  { href: `${base}contact/`, label: 'Contact' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -15,10 +17,10 @@ const currentPath = Astro.url.pathname;
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo with Profile Image -->
-      <a href="/" class="flex items-center gap-3 group">
+      <a href={base} class="flex items-center gap-3 group">
         <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-accent/50 group-hover:border-accent transition-colors duration-300">
           <img 
-            src="/assets/images/profile/profile.png" 
+            src={`${base}assets/images/profile/profile.png`}
             alt="Muhammad Muneeb"
             class="w-full h-full object-cover"
           />
@@ -35,7 +37,7 @@ const currentPath = Astro.url.pathname;
             href={href}
             class:list={[
               'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300',
-              currentPath === href 
+              currentPath === href || currentPath === href.slice(0, -1)
                 ? 'text-primary bg-surface' 
                 : 'text-secondary hover:text-primary hover:bg-surface/50'
             ]}
@@ -66,7 +68,7 @@ const currentPath = Astro.url.pathname;
           href={href}
           class:list={[
             'block px-4 py-3 rounded-lg text-base font-medium transition-all duration-300',
-            currentPath === href 
+            currentPath === href || currentPath === href.slice(0, -1)
               ? 'text-primary bg-background' 
               : 'text-secondary hover:text-primary hover:bg-background/50'
           ]}

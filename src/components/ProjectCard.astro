@@ -9,13 +9,17 @@ interface Props {
 }
 
 const { name, description, image, techStack, github, live } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+// Fix image path to use base URL if it's a local path
+const imageSrc = image.startsWith('/') ? `${base}${image.slice(1)}` : image;
 ---
 
 <article class="group relative bg-surface rounded-2xl overflow-hidden border border-surface hover:border-accent/30 transition-all duration-500 hover-lift">
   <!-- Image -->
   <div class="relative aspect-video overflow-hidden">
     <img 
-      src={image} 
+      src={imageSrc} 
       alt={name}
       class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
       loading="lazy"
