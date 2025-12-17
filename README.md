@@ -1,240 +1,132 @@
 # Muhammad Muneeb Ur Rehman - Portfolio
 
-A modern, futuristic portfolio website built with **Astro**, **Tailwind CSS**, and **TypeScript**. Features smooth animations with GSAP and Framer Motion.
+A modern, futuristic portfolio website built with Astro, Tailwind CSS, and smooth animations.
 
-![Portfolio Preview](https://via.placeholder.com/800x400/18191A/3FA2A9?text=Portfolio+Preview)
+🌐 **Live Demo**: [https://mun33b-exe.github.io/mun33b-exe-portfolio](https://mun33b-exe.github.io/mun33b-exe-portfolio)
+
+---
 
 ## ✨ Features
 
-- 🚀 **Built with Astro** - Static site generation for blazing fast performance
-- 🎨 **Tailwind CSS** - Utility-first styling with custom color tokens
-- 📱 **Fully Responsive** - Mobile-first design that looks great on all devices
-- ✨ **Smooth Animations** - GSAP for hero animations, Framer Motion for components
-- 🌊 **Smooth Scrolling** - Lenis for butter-smooth scroll experience
-- 🌙 **Dark Theme** - Premium dark design inspired by Linear/Vercel
-- ♿ **Accessible** - Semantic HTML and ARIA labels
-- 🔍 **SEO Optimized** - Meta tags, Open Graph, and semantic markup
+- **Modern Stack**: Astro + Tailwind CSS + TypeScript
+- **Smooth Animations**: GSAP hero animations + Lenis smooth scrolling
+- **Responsive Design**: Mobile-first, works on all devices
+- **Dark Theme**: Professional dark color scheme
+- **SEO Optimized**: Meta tags, semantic HTML, fast loading
+- **Static Output**: Pure HTML/CSS/JS, no server required
 
-## 🛠️ Tech Stack
+---
 
-| Technology | Purpose |
-|------------|---------|
-| [Astro](https://astro.build) | Static site generator |
-| [Tailwind CSS](https://tailwindcss.com) | Styling |
-| [TypeScript](https://typescriptlang.org) | Type safety |
-| [GSAP](https://gsap.com) | Hero animations |
-| [Framer Motion](https://framer.com/motion) | Component animations |
-| [Lenis](https://lenis.studiofreight.com) | Smooth scrolling |
+## 🚀 Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+---
 
 ## 📁 Project Structure
 
 ```
-/
 ├── public/
-│   ├── assets/
-│   │   ├── images/
-│   │   │   ├── projects/    # Project screenshots
-│   │   │   └── profile/     # Profile image
-│   │   └── icons/           # SVG icons
-│   └── favicon.svg
+│   └── assets/
+│       ├── images/       # Profile & project images
+│       └── fonts/        # Outfit font
 ├── src/
-│   ├── components/
-│   │   ├── Navbar.astro
-│   │   ├── Footer.astro
-│   │   ├── Hero.astro
-│   │   ├── ProjectCard.astro
-│   │   ├── SkillCard.astro
-│   │   ├── SocialLinks.astro
-│   │   ├── SectionHeader.astro
-│   │   ├── AnimatedText.tsx    # React island
-│   │   └── HeroAnimation.js    # GSAP
-│   ├── data/
-│   │   ├── projects.ts
-│   │   ├── skills.ts
-│   │   ├── experience.ts
-│   │   └── education.ts
-│   ├── layouts/
-│   │   └── BaseLayout.astro
-│   ├── pages/
-│   │   ├── index.astro
-│   │   ├── about.astro
-│   │   ├── experience.astro
-│   │   ├── education.astro
-│   │   ├── projects.astro
-│   │   └── contact.astro
-│   └── styles/
-│       └── global.css
-└── package.json
+│   ├── components/       # Astro components
+│   ├── data/             # TypeScript data files
+│   ├── layouts/          # Base layout
+│   ├── pages/            # Route pages
+│   └── styles/           # Global CSS
+└── dist/                 # Build output (generated)
 ```
-
-## 🎨 Color System
-
-The portfolio uses a carefully crafted color palette:
-
-| Color | Hex | Usage |
-|-------|-----|-------|
-| Background | `#18191A` | Main background |
-| Surface | `#232325` | Cards, navbar |
-| Primary | `#FFFFFF` | Primary text |
-| Secondary | `#B3B3B3` | Secondary text |
-| Accent | `#3FA2A9` | Brand color, CTAs |
-| Button | `#303136` | Button surfaces |
-| Online | `#00FF44` | Status indicator |
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ 
-- npm or pnpm
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/muneeb-exe/portfolio.git
-   cd portfolio
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser**
-   ```
-   http://localhost:4321
-   ```
-
-### Customization
-
-1. **Update personal info** - Edit data files in `src/data/`
-2. **Replace images** - Add your images to `public/assets/images/`
-3. **Add your CV** - Place `cv.pdf` in `public/assets/`
-4. **Update social links** - Edit `src/components/SocialLinks.astro`
-
-## 📦 Building for Production
-
-```bash
-npm run build
-```
-
-The output will be in the `dist/` folder.
-
-### Preview Production Build
-
-```bash
-npm run preview
-```
-
-## 🌐 Deployment
-
-### GitHub Pages
-
-1. **Install the GitHub adapter**
-   ```bash
-   npm install @astrojs/github-pages
-   ```
-
-2. **Update `astro.config.mjs`**
-   ```javascript
-   import { defineConfig } from 'astro/config';
-
-   export default defineConfig({
-     site: 'https://muneeb-exe.github.io',
-     base: '/portfolio',
-   });
-   ```
-
-3. **Create GitHub Actions workflow**
-   
-   Create `.github/workflows/deploy.yml`:
-   ```yaml
-   name: Deploy to GitHub Pages
-
-   on:
-     push:
-       branches: [main]
-     workflow_dispatch:
-
-   permissions:
-     contents: read
-     pages: write
-     id-token: write
-
-   jobs:
-     build:
-       runs-on: ubuntu-latest
-       steps:
-         - name: Checkout
-           uses: actions/checkout@v4
-         - name: Setup Node.js
-           uses: actions/setup-node@v4
-           with:
-             node-version: 20
-             cache: npm
-         - name: Install dependencies
-           run: npm ci
-         - name: Build
-           run: npm run build
-         - name: Upload artifact
-           uses: actions/upload-pages-artifact@v3
-           with:
-             path: ./dist
-
-     deploy:
-       needs: build
-       runs-on: ubuntu-latest
-       environment:
-         name: github-pages
-         url: ${{ steps.deployment.outputs.page_url }}
-       steps:
-         - name: Deploy to GitHub Pages
-           id: deployment
-           uses: actions/deploy-pages@v4
-   ```
-
-4. **Enable GitHub Pages**
-   - Go to repository Settings → Pages
-   - Under "Build and deployment", select "GitHub Actions"
-
-5. **Push to main branch** - The site will automatically deploy!
-
-### Vercel
-
-1. Connect your GitHub repository to Vercel
-2. Deploy with zero configuration - Vercel auto-detects Astro
-
-### Netlify
-
-1. Connect your GitHub repository to Netlify
-2. Build command: `npm run build`
-3. Publish directory: `dist`
-
-## 📝 Available Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run astro` | Run Astro CLI commands |
-
-## 📄 License
-
-MIT License - feel free to use this template for your own portfolio!
-
-## 🙏 Acknowledgments
-
-- Design inspiration from [Linear](https://linear.app), [Vercel](https://vercel.com), [Stripe](https://stripe.com)
-- Icons from [Heroicons](https://heroicons.com)
-- Fonts from [Google Fonts](https://fonts.google.com)
 
 ---
 
-Made with ♥ by [Muhammad Muneeb Ur Rehman](https://github.com/muneeb-exe)
+## 🎨 Color System
+
+| Token | Color | Usage |
+|-------|-------|-------|
+| `--color-background` | `#18191A` | Page background |
+| `--color-surface` | `#232325` | Cards, surfaces |
+| `--color-accent` | `#3FA2A9` | Brand color, links |
+| `--color-primary` | `#FFFFFF` | Primary text |
+| `--color-secondary` | `#B3B3B3` | Secondary text |
+
+---
+
+## 🌐 GitHub Pages Deployment
+
+This project is configured for **automatic deployment** via GitHub Actions.
+
+### Automatic Deployment (Recommended)
+
+1. Push your code to the `main` branch
+2. GitHub Actions will automatically build and deploy
+3. View your site at: `https://mun33b-exe.github.io/mun33b-exe-portfolio`
+
+### Manual Deployment
+
+```bash
+# Build the project
+npm run build
+
+# The static files are in ./dist
+# Deploy the contents of ./dist to GitHub Pages
+```
+
+### GitHub Repository Settings
+
+1. Go to **Settings** → **Pages**
+2. Under **Source**, select **GitHub Actions**
+3. The workflow will deploy automatically on push
+
+---
+
+## 🔧 Configuration
+
+To change the deployment URL, edit `astro.config.mjs`:
+
+```javascript
+export default defineConfig({
+  site: 'https://your-username.github.io',
+  base: '/your-repo-name',
+  // ...
+});
+```
+
+For root domain (`username.github.io`), use:
+
+```javascript
+export default defineConfig({
+  site: 'https://your-username.github.io',
+  base: '/',
+  // ...
+});
+```
+
+---
+
+## 📜 License
+
+MIT License - Feel free to use this template for your own portfolio!
+
+---
+
+## 👤 Author
+
+**Muhammad Muneeb Ur Rehman**
+
+- GitHub: [@mun33b-exe](https://github.com/mun33b-exe)
+- LinkedIn: [mun33b-exe](https://www.linkedin.com/in/mun33b-exe/)
+- YouTube: [@mun33b-exe](https://www.youtube.com/@mun33b-exe)
