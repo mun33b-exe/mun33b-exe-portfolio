@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import { skills } from '../data/skills';
+import { getSkillIcon, getCategoryIcon } from '../data/skillIcons';
 ---
 
 <BaseLayout title="About | Muhammad Muneeb Ur Rehman">
@@ -74,13 +75,14 @@ import { skills } from '../data/skills';
           <!-- Dynamically render skill categories -->
           {skills.slice(0, 4).map((skillGroup) => (
             <div class="p-5 bg-surface rounded-2xl border border-surface hover:border-accent/30 transition-all duration-300 group">
-              <h4 class="text-base font-semibold text-accent mb-3 flex items-center gap-2">
-                <span class="w-2 h-2 bg-accent rounded-full" />
+              <h4 class="text-base font-semibold text-accent mb-3 flex items-center gap-3">
+                <span class="w-7 h-7 flex items-center justify-center bg-accent/10 rounded-lg text-accent" set:html={getCategoryIcon(skillGroup.category)} />
                 {skillGroup.category}
               </h4>
               <div class="flex flex-wrap gap-2">
                 {skillGroup.items.map((item) => (
-                  <span class="px-3 py-1.5 text-sm bg-background text-secondary rounded-lg border border-surface group-hover:border-accent/20 transition-colors">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm bg-background text-secondary rounded-lg border border-surface group-hover:border-accent/20 transition-colors">
+                    <span class="w-3.5 h-3.5 opacity-60" set:html={getSkillIcon(item)} />
                     {item}
                   </span>
                 ))}
@@ -91,8 +93,11 @@ import { skills } from '../data/skills';
           <!-- Show remaining categories in a smaller format -->
           <div class="grid grid-cols-2 gap-4">
             {skills.slice(4).map((skillGroup) => (
-              <div class="p-4 bg-surface rounded-xl border border-surface hover:border-accent/30 transition-colors">
-                <h4 class="text-sm font-semibold text-accent mb-2">{skillGroup.category}</h4>
+              <div class="p-4 bg-surface rounded-xl border border-surface hover:border-accent/30 transition-colors group">
+                <h4 class="text-sm font-semibold text-accent mb-2 flex items-center gap-2">
+                  <span class="w-5 h-5 opacity-70" set:html={getCategoryIcon(skillGroup.category)} />
+                  {skillGroup.category}
+                </h4>
                 <p class="text-xs text-secondary">
                   {skillGroup.items.slice(0, 3).join(' • ')}
                 </p>
