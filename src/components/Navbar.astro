@@ -1,0 +1,95 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/experience', label: 'Experience' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/education', label: 'Education' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-surface/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo with Profile Image -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-accent/50 group-hover:border-accent transition-colors duration-300">
+          <img 
+            src="/assets/images/profile/profile.png" 
+            alt="Muhammad Muneeb"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <span class="text-primary font-semibold text-lg tracking-tight">
+          Portfolio
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-1">
+        {navLinks.map(({ href, label }) => (
+          <a 
+            href={href}
+            class:list={[
+              'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300',
+              currentPath === href 
+                ? 'text-primary bg-surface' 
+                : 'text-secondary hover:text-primary hover:bg-surface/50'
+            ]}
+          >
+            {label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-btn"
+        class="md:hidden p-2 rounded-lg text-secondary hover:text-primary hover:bg-surface transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden">
+    <div class="px-4 py-4 space-y-1 bg-surface/95 backdrop-blur-lg border-t border-surface">
+      {navLinks.map(({ href, label }) => (
+        <a 
+          href={href}
+          class:list={[
+            'block px-4 py-3 rounded-lg text-base font-medium transition-all duration-300',
+            currentPath === href 
+              ? 'text-primary bg-background' 
+              : 'text-secondary hover:text-primary hover:bg-background/50'
+          ]}
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+
+  menuBtn?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.toggle('hidden');
+    
+    if (!isOpen) {
+      menuIcon?.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+    } else {
+      menuIcon?.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+    }
+  });
+</script>

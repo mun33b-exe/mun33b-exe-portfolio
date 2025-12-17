@@ -1,0 +1,31 @@
+---
+interface Props {
+  name: string;
+  icon?: string;
+  category?: string;
+}
+
+const { name, icon, category } = Astro.props;
+---
+
+<div class="group flex items-center gap-4 p-4 bg-surface rounded-xl border border-surface hover:border-accent/30 transition-all duration-300 hover-lift">
+  {icon && (
+    <div class="w-12 h-12 flex items-center justify-center bg-button rounded-lg text-accent group-hover:bg-accent/10 transition-colors duration-300">
+      <img 
+        src={icon} 
+        alt={name}
+        class="w-6 h-6"
+        loading="lazy"
+      />
+    </div>
+  )}
+  
+  <div>
+    <span class="font-medium text-primary group-hover:text-accent transition-colors duration-300">
+      {name}
+    </span>
+    {category && (
+      <p class="text-xs text-secondary mt-1">{category}</p>
+    )}
+  </div>
+</div>
