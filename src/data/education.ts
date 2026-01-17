@@ -1,3 +1,8 @@
+export interface CourseItem {
+  name: string;
+  description: string;
+}
+
 export interface Education {
   id: string;
   degree: string;
@@ -7,7 +12,7 @@ export interface Education {
   startYear: string;
   endYear: string | 'Present';
   description?: string;
-  achievements?: string[];
+  coursework?: CourseItem[];
 }
 
 export const education: Education[] = [
@@ -16,14 +21,15 @@ export const education: Education[] = [
     degree: "Bachelor's Degree",
     field: 'Software Engineering',
     institution: 'COMSATS University Islamabad',
-    location: 'Islamabad, Pakistan',
+    location: 'Wah Cantt, Pakistan',
     startYear: '2022',
     endYear: '2026',
-    description: 'Focused on software engineering, mobile development, and web technologies.',
-    achievements: [
-      'Developed multiple mobile applications as part of coursework',
-      'Participated in coding competitions and hackathons',
-      'Active member of the Computer Science society',
+    description: 'Undergraduate program covering software engineering fundamentals, with hands-on focus on mobile development, backend systems, and database design.',
+    coursework: [
+      { name: 'Mobile Application Development', description: 'Built Flutter apps as semester projects' },
+      { name: 'Database Systems', description: 'Designed and implemented relational databases with SQL' },
+      { name: 'Software Design & Architecture', description: 'Applied design patterns and clean code principles' },
+      { name: 'Object-Oriented Programming', description: 'Developed applications using Java and Dart' },
     ],
   },
 ];
