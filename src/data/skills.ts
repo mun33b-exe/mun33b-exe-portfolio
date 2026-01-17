@@ -1,15 +1,16 @@
 export interface SkillCategory {
   category: string;
   items: string[];
+  tier: 'core' | 'supporting' | 'secondary'; // Visual hierarchy: core > supporting > secondary
 }
 
 export const skills: SkillCategory[] = [
   {
-    category: "Mobile App Development",
+    category: "Flutter Development",
+    tier: 'core',
     items: [
       "Flutter",
       "Dart",
-      "Android (Java & Kotlin)",
       "Cross-platform Development",
       "Responsive UI",
       "Platform Integrations"
@@ -17,15 +18,17 @@ export const skills: SkillCategory[] = [
   },
   {
     category: "Architecture & State Management",
+    tier: 'core',
     items: [
       "Clean Architecture",
-      "Bloc",
+      "BLoC",
       "Provider",
       "Dependency Injection"
     ]
   },
   {
-    category: "Backend & Cloud (Mobile)",
+    category: "Backend & Cloud",
+    tier: 'supporting',
     items: [
       "Node.js (REST APIs)",
       "Express.js",
@@ -37,6 +40,7 @@ export const skills: SkillCategory[] = [
   },
   {
     category: "Programming Languages",
+    tier: 'secondary',
     items: [
       "Dart",
       "JavaScript",
@@ -49,9 +53,9 @@ export const skills: SkillCategory[] = [
   },
   {
     category: "UI/UX & Design",
+    tier: 'secondary',
     items: [
       "Figma",
-      "Design Systems",
       "Mobile-first UI",
       "Dark Mode & Theming",
       "UX Fundamentals"
@@ -59,6 +63,7 @@ export const skills: SkillCategory[] = [
   },
   {
     category: "Tools & Workflow",
+    tier: 'secondary',
     items: [
       "Git & GitHub",
       "Android Studio",

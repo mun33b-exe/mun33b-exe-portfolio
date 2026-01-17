@@ -50,26 +50,62 @@ const base = import.meta.env.BASE_URL;
       <div class="max-w-7xl mx-auto">
         <SectionHeader 
           title="Skills & Expertise" 
-          subtitle="Specialized in mobile app development with Flutter and clean architecture"
+          subtitle="Flutter development, clean architecture, and backend integrations"
         />
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 fade-in">
-          {skills.map((skillGroup) => (
-            <div class="p-6 bg-background rounded-2xl border border-surface hover:border-accent/30 transition-all duration-300 group">
-              <h3 class="text-lg font-semibold text-accent mb-4 flex items-center gap-3">
-                <span class="w-8 h-8 flex items-center justify-center bg-accent/10 rounded-lg text-accent" set:html={getCategoryIcon(skillGroup.category)} />
-                {skillGroup.category}
-              </h3>
-              <div class="flex flex-wrap gap-2">
-                {skillGroup.items.map((item) => (
-                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm bg-surface text-secondary rounded-lg border border-surface group-hover:border-accent/20 transition-colors">
-                    <span class="w-4 h-4 opacity-60" set:html={getSkillIcon(item)} />
-                    {item}
-                  </span>
-                ))}
+          {skills.map((skillGroup) => {
+            const isCore = skillGroup.tier === 'core';
+            const isSupporting = skillGroup.tier === 'supporting';
+            
+            // Card container styles based on tier
+            const cardClass = isCore 
+              ? 'bg-background border-accent/30 hover:border-accent/50 shadow-lg shadow-accent/5'
+              : isSupporting
+                ? 'bg-background border-accent/15 hover:border-accent/30 shadow-md shadow-accent/3'
+                : 'bg-background border-surface hover:border-accent/15';
+            
+            // Heading styles based on tier
+            const headingClass = isCore 
+              ? 'text-xl text-accent'
+              : isSupporting
+                ? 'text-lg text-accent/90'
+                : 'text-lg text-accent/70';
+            
+            // Icon container styles based on tier
+            const iconClass = isCore 
+              ? 'w-9 h-9 bg-accent/15 text-accent'
+              : isSupporting
+                ? 'w-8 h-8 bg-accent/12 text-accent/85'
+                : 'w-8 h-8 bg-accent/8 text-accent/60';
+            
+            // Skill tag styles based on tier
+            const tagClass = isCore
+              ? 'bg-surface text-primary border-accent/20 group-hover:border-accent/30'
+              : isSupporting
+                ? 'bg-surface text-primary/90 border-accent/12 group-hover:border-accent/20'
+                : 'bg-surface text-secondary border-surface group-hover:border-accent/10';
+            
+            return (
+              <div class={`p-6 rounded-2xl border transition-all duration-300 group ${cardClass}`}>
+                <h3 class={`font-semibold mb-4 flex items-center gap-3 ${headingClass}`}>
+                  <span class={`flex items-center justify-center rounded-lg ${iconClass}`} set:html={getCategoryIcon(skillGroup.category)} />
+                  {skillGroup.category}
+                  {isCore && (
+                    <span class="ml-auto text-xs font-medium px-2 py-0.5 bg-accent/10 text-accent rounded-full">Core</span>
+                  )}
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                  {skillGroup.items.map((item) => (
+                    <span class={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-lg border transition-colors ${tagClass}`}>
+                      <span class="w-4 h-4 opacity-60" set:html={getSkillIcon(item)} />
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
