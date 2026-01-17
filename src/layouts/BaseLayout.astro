@@ -7,8 +7,8 @@ interface Props {
 }
 
 const { 
-  title = "Muhammad Muneeb Ur Rehman | Software Engineer",
-  description = "Software Engineer specializing in mobile development with Flutter. Building innovative applications with a focus on UI/UX and clean architecture."
+  title = "Muhammad Muneeb Ur Rehman | Flutter Mobile App Developer",
+  description = "Muhammad Muneeb Ur Rehman — Flutter Mobile App Developer. Builds Flutter apps with BLoC and Clean Architecture, and backend REST APIs using Node.js & Express. Open to internships, junior roles, and freelance."
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
@@ -36,8 +36,22 @@ const base = import.meta.env.BASE_URL;
     <!-- Favicon -->
     <link rel="icon" type="image/png" href={`${base}assets/images/profile/profile.png`} />
     
-    <!-- Preload Outfit Font (Local) -->
+    <!-- Preconnect & Preload Fonts -->
+    <link rel="preconnect" href="/assets/fonts" />
     <link rel="preload" href={`${base}assets/fonts/Outfit-VariableFont_wght.ttf`} as="font" type="font/ttf" crossorigin />
+    
+    <!-- JSON-LD Person Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Muhammad Muneeb Ur Rehman",
+      "jobTitle": "Flutter Mobile App Developer",
+      "url": "https://mun33b.dev",
+      "sameAs": [
+        "https://github.com/mun33b",
+        "https://linkedin.com/in/mun33b"
+      ]
+    })} />
     
     <title>{title}</title>
   </head>
