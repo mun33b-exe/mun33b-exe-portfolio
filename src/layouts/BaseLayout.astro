@@ -36,9 +36,10 @@ const base = import.meta.env.BASE_URL;
     <!-- Favicon -->
     <link rel="icon" type="image/png" href={`${base}assets/images/profile/profile.png`} />
     
-    <!-- Preconnect & Preload Fonts -->
-    <link rel="preconnect" href="/assets/fonts" />
-    <link rel="preload" href={`${base}assets/fonts/Outfit-VariableFont_wght.ttf`} as="font" type="font/ttf" crossorigin />
+    <!-- Google Fonts - Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
     
     <!-- JSON-LD Person Schema -->
     <script type="application/ld+json" set:html={JSON.stringify({

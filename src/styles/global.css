@@ -1,15 +1,8 @@
 @import "tailwindcss";
 
 /* ========================================
-   FONT FACE - Outfit
+   FONT - Outfit (loaded via Google Fonts in BaseLayout)
    ======================================== */
-@font-face {
-  font-family: 'Outfit';
-  src: url('/assets/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
 
 /* ========================================
    COLOR SYSTEM - CSS Custom Properties
